@@ -53,7 +53,7 @@ router.post('/login', (req, res) => {
         }
         //查询到用户名密码一致的数据
         // 生成token                  userpwd  密码钥匙  在后期验证时候需要用到   expiresIn  有效期  秒为单位
-        const token = 'Bearer ' + jwt.sign({ name: username }, 'bigNews', { expiresIn: 5000 })
+        const token = 'Bearer ' + jwt.sign({ name: username }, 'bigNews', { expiresIn: 2 * 60 * 60 * 24 })
         res.json({ "status": 0, "message": "登录成功!", token });
 
     })

@@ -33,8 +33,8 @@ const Login = require('./router/login.js')
 const article_List = require('./router/article_list.js')
 const Persona = require('./router/persona.js')
 app.use('/api', Login);
-app.use('/my', article_List);
-app.use('/my/article', Persona);
+app.use('/my', Persona);
+app.use('/my/article', article_List);
 
 
 // 6.0 错误处理中间件用来检查token合法性
