@@ -24,7 +24,7 @@ app.use(jwt({
     secret: 'bigNews', // 生成token时的 钥匙，必须统一
     algorithms: ['HS256'] // 必填，加密算法，无需了解
 }).unless({
-    path: ['/api/login', '/api/register', /^\/uploads\/.*/] // 除了这两个接口，其他都需要认证
+    path: ['/api/login', '/api/reguser', /^\/uploads\/.*/] // 除了这两个接口，其他都需要认证
 }));
 
 
@@ -38,7 +38,7 @@ app.use('/my/article', Persona);
 
 
 // 6.0 错误处理中间件用来检查token合法性
-server.use((err, req, res, next) => {
+app.use((err, req, res, next) => {
     console.log('有错误', err)
     if (err.name === 'UnauthorizedError') {
         // res.status(401).send('invalid token...');
